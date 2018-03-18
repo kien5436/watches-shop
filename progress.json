@@ -1,0 +1,54 @@
+{
+	"admin": [
+		"general":
+		{
+			"re - divide layout",
+			"recceive and notice notifications",
+			"view or edit account"
+		},
+		"manage accounts":
+		{
+			"view",
+			"add",
+			"edit",
+			"delete",
+			"find accounts"
+		},
+		"manage products":
+		{
+			"form validation"
+		},
+		"report and statistic analysis":
+		{
+
+		},
+		"manage comments":
+		{
+
+		},
+		"others":
+		{
+			"banners",
+			"promo images"
+		}
+	],
+
+	"guess": [
+		"general":
+		{
+			"add links",
+			"active link"
+
+		},
+		"search and cart": {
+			"search",
+			"advanced search",
+			"cart"
+		},
+		"home":
+		{
+			"send mail",
+			"classify products"
+		}
+	]
+}
