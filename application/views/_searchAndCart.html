@@ -1,0 +1,119 @@
+<div class="search-and-cart">
+	<div class="search">
+		<div class="switch">
+			<i class="fa fa-search"></i>
+			<p>Tìm kiếm</p>
+		</div>
+		<form action="<?= base_url('Search') ?>" id="search-form" name="search-form">
+			<input type="search" name="inp-search" id="inp-search" placeholder="Nhập từ khóa tìm kiếm">
+			<div class="search-form-advanced-toggle">Tìm kiếm nâng cao <i class="fa fa-angle-down"></i></div>
+			<div class="search-form-advanced">
+				<div class="brands">
+					<p>thương hiệu</p>
+					<select name="brand">
+						<option value="none" selected disabled>--- Chọn một thương hiệu ---</option>
+						<option value="casio">Casio</option>
+						<option value="citizen">Citizen</option>
+						<option value="seiko">Seiko</option>
+						<option value="op">OP</option>
+						<option value="skagen">Skagen</option>
+						<option value="dw">Daniel Wellington (DW)</option>
+						<option value="orient">Orient</option>
+						<option value="g-shock">G-Shock</option>
+						<option value="candino">Candino</option>
+						<option value="micheal kors">Micheal Kors</option>
+						<option value="fossil">Fossil</option>
+						<option value="doxa">Doxa</option>
+						<option value="tissot">Tissot</option>
+						<option value="longines">Longines</option>
+						<option value="movado">Movado</option>
+						<option value="sevenfriday">Sevenfriday</option>
+						<option value="frederique constant">Frederique Constant</option>
+					</select>
+				</div>
+				<div class="clockworks">
+					<p>loại máy</p>
+					<select name="clockwork">
+						<option value="none" selected disabled>--- Chọn loại máy ---</option>
+						<option value="pin (quartz)">Pin (Quartz)</option>
+						<option value="tự động (cơ)">Tự động (Cơ)</option>
+						<option value="quang">Quang</option>
+					</select>
+				</div>
+				<div class="material">
+					<p>chất liệu dây</p>
+					<select name="wire">
+						<option value="none" selected disabled>--- Chọn chất liệu ---</option>
+						<option value="Thép không gỉ">Thép không gỉ</option>
+						<option value="Da">Da</option>
+						<option value="Nhựa">Nhựa</option>
+						<option value="Vải">Vải</option>
+					</select>
+				</div>
+				<div class="styles">
+					<p>Kiểu dáng	</p>
+					<select name="style">
+						<option value="none" selected disabled>--- Chọn kiểu dáng ---</option>
+						<option value="Nữ">Nữ</option>
+						<option value="Nam">Nam</option>
+						<option value="Đôi">Đôi</option>
+						<option value="Thể thao">Thể thao</option>
+						<option value="Thời trang">Thời trang</option>
+					</select>
+				</div>
+				<div class="prices">
+					<p>Giá</p>
+					<select name="price">
+						<option value="none" selected disabled>--- Chọn mức giá ---</option>
+						<option value="lt2">Dưới 2 triệu</option>
+						<option value="2-4">2 - 4 triệu</option>
+						<option value="4-6">4 - 6 triệu</option>
+						<option value="6-8">6 - 8 triệu</option>
+						<option value="8-10">8 - 10 triệu</option>
+						<option value="gt10">Trên 10 triệu</option>
+					</select>
+				</div>
+			</div>
+			<input type="submit" name="btn-search" value="Tìm" class="btn">
+			<input type="button" value="Đóng" class="btn btn-close">
+		</form>
+	</div>
+	<div class="cart">
+		<div class="switch">
+			<i class="fa fa-shopping-cart"></i>
+			<p>Giỏ hàng</p>
+		</div>
+		<div class="cart-info">
+			<p>Thông tin giỏ hàng</p>
+			<div class="cart-info-empty">Giỏ hàng rỗng :(</div>
+			<div class="cart-info-wrapper">
+				<div class="cart-info-scroll">
+					<div class="cart-info-detail">
+						<a href="#"><img src="../images/mau1.jpg"></a>
+						<div>
+							<p><a href="#">Đồng hồ Orient FUNG6003W0 Nữ Pin Dây Da aa aa aajaiof;wjfioa;jf;oiawj</a></p>
+							<span class="price-old">1.140.000 dong</span>
+							<span class="price-new">1.000.000 dong</span><br><br>
+							Số lượng: <input type="number" name="inp-quantity" id="inp-quantity" min="1" value="1">
+							<!-- inp-quantity is not exclusive -->
+						</div>
+						<i class="fa fa-remove" title="xóa khỏi giỏ"></i>
+					</div>
+					<div class="cart-info-detail">
+						<a href="#"><img src="../images/mau1.jpg"></a>
+						<div>
+							<p><a href="#">Đồng hồ Orient FUNG6003W0 Nữ Pin Dây Da aa aa aajaiof;wjfioa;jf;oiawj</a></p>
+							<span>1.140.000 dong</span><span>1.000.000 dong</span><br><br>
+							Số lượng: <input type="number" name="inp-quantity" id="inp-quantity" min="1" value="1">
+						</div>
+						<i class="fa fa-remove" title="xóa khỏi giỏ"></i>
+					</div>
+				</div>
+				<p>Tổng tiền: <span class="cart-info-total">200.000.000 dong</span></p>
+			</div>
+			<a href="#" class="btn btn-checkout">Thanh toán</a>
+			<input type="submit" value="Xóa giỏ hàng" class="btn btn-remove-all">
+			<input type="button" value="Đóng" class="btn btn-close">
+		</div>
+	</div>
+</div>
