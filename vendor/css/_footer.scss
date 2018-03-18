@@ -1,0 +1,117 @@
+footer {
+	// position: relative;
+	// bottom: 0;
+	margin: auto;
+	width: 	map-get($sizes, 'section');
+	// height: rem(450);
+	height: auto;
+	background-color:	#000;
+	color: #fff;
+	font-family: $default-font;
+	a {
+		color: map-get($colors, 'text-grey');
+		&:hover {
+			color: #fff
+		}
+	}
+	.footer-info {
+		// position: absolute;
+		// box-sizing: border-box;
+		width: 100%;
+		// height: rem(400);
+		padding: em(30);
+		// padding-bottom: 0;
+		&:after {	@extend %clearfix;}
+		&-col {
+			float: left;
+			width: 25%;
+			margin-right: em(20);
+			&-wrapper {
+				margin-bottom: em(20);
+				line-height: 1.5em;
+				&-address {
+					font-size: rem(13);
+					i {
+						margin-right: em(5)
+					}
+				}
+				.newsletter {
+					position: relative;
+					input {
+						width: 90%;
+						padding: 4%;
+					}
+					button {
+						position: absolute;
+						top: 9%;
+						right: 15%;
+						font-size: 1.5em;
+						cursor: pointer;
+						border: none;
+					}
+				}
+			}
+			&-mid {
+				width: 20%;
+				li {
+					line-height: 2em;
+					i {
+						margin: 0 em(5) 0 em(15)
+					}
+				}
+			}
+			&-right {
+				float: right;
+				width: 23.12%;
+				margin-right: 0;
+				div {
+					background: url('../../images/home.png') 0 bottom no-repeat;
+					height: 6em;
+				}
+			}
+			h3 {
+				margin-bottom: rem(20);
+				font-size: em(19)
+			}
+		}
+	}
+	.footer-link {
+		// position: absolute;
+		// bottom: 0;
+		// &:before {
+			// 	@extend %clearfix;
+			// }
+			width: 100%;
+			height: em(50);
+			line-height: em(50);
+			border-top: 1px solid #fff;
+			padding: 0 2%;
+			&:after {	@extend %clearfix;}
+			&-copyright {
+				float: left;
+				// margin: em(17) 0 0 em(30)
+			}
+			&-social {
+				// position: absolute;
+				// top: 5px;
+				// right: 0;
+				float: right;
+				// margin-right: 40px;
+				margin-top: 0.7%;
+				a {
+					display: inline-block;
+					// float: left;
+					width: em(30);
+					height: em(30);
+					$y : 40%;
+					@for $i from 1 through 3 {
+						&#social-#{$i} {
+							background: url(../../images/home.png) 99% $y no-repeat;
+							$y : $y + 25%;
+						}
+					}	
+					&:hover {filter: brightness(150%)}
+				}
+			}
+		}
+	}

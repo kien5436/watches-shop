@@ -1,0 +1,323 @@
+@import 'lib';
+
+*, *:after, *:before {box-sizing: border-box; margin: 0; padding: 0;}
+a {color: #000; text-decoration: none}
+
+html, body {
+	background:	map-get($colors, 'body-grey');
+	height: 100%;
+	overflow: hidden;
+	width: 100%;
+	.price-old {text-decoration: line-through; color: #666; font-size: .9rem;}
+	.panel-black {
+		background:	map-get($colors, 'icon-black'); 
+		border: 1px solid #ccc;
+		color: #ccc;
+		display: none;
+		position: absolute;
+	}
+}
+
+.info {
+	background: rgba(0, 0, 0, .8);
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	transform: translateY(-999%);
+	transition: .7s;
+	z-index: 20;
+	&-wrapper {
+		background:	map-get($colors, 'body-grey');
+		height: 90%;
+		margin: 2% auto;
+		width: 90%;
+	}
+}
+
+header {
+	background:	map-get($colors, 'icon-black');
+	font: 400 1em/1 $default-font;
+	height: em(50);
+	left: 0;
+	line-height: em(50);
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 2;
+	> a {
+		display: block;
+		float: left;
+		height: 100%;
+		width: 13%;
+		img {
+			display: table-cell;
+			height: 80%; 
+			vertical-align: middle;
+			width: 100%;
+		}
+	}
+	form {
+		float: left;
+		margin: 0 2%;
+		position: relative;
+		width: 49%;
+		input {
+			background: transparent;
+			border: 2px solid #ccc;
+			color: #fff;
+			padding: 1% 10% 1% 2%;
+			width: 100%;
+		}
+		button {
+			background: #000;
+			border: none;
+			color: #fff;
+			cursor: pointer;
+			font-size: 1.1em;
+			position: absolute;
+			padding: 0.6% 3%;
+			right: em(3);
+			top: 21%;
+		}
+	}
+	.header-right {
+		float: right;
+		text-align: right;
+		width: 30%;
+		> div {
+			color: #ccc;
+			display: inline-block;
+			position: relative;
+			.switch {
+				cursor: pointer;
+				text-align: center;
+				transition: .3s;
+				width: 3em;
+				&.clicked,
+				&:hover {color: #fff;}
+			}
+			.filter-list {
+				background:	map-get($colors, 'icon-black');
+				left: -8em;
+				padding: 1em;
+				text-align: center;
+				width: 16em;
+				form {
+					margin: auto; 
+					width: 100%;
+					div {
+						line-height: 2em;
+						p {text-transform: capitalize; color: #ccc;}
+						select {
+							background-color: map-get($colors, 'icon-black');
+							border: 1px solid #ccc;
+							color: #ccc;
+							font-size: .9em;
+							width: 100%;
+						}
+					}
+					input {color: #ccc; font-weight: 700;}
+				}
+			}
+			.admin {
+				&-top {
+					cursor: pointer;
+					margin-right: 21%;
+					width: auto;
+					img {width: 2.5em; vertical-align: middle;}
+				}
+				&-bottom {
+					padding: 0 8%;
+					text-align: left;
+					width: 93%;
+					p {
+						transition: .3s;
+						&:hover {color: #fff;}
+					}
+				}
+			}
+			.noti-wrapper {
+				left: -15em;
+				padding: 1em;
+				position: absolute;
+				text-align: left;
+				width: 30em;
+			}
+			a {
+				color: #ccc;
+				display: block;
+				height: 100%;
+				transition: .3s;
+				width: 100%;
+				&:hover {color: #fff;}
+			}
+		}
+	}
+}
+
+.container {
+	height: 100%;
+	margin: em(50) 0 0 13%;
+	.sidebar {
+		background: map-get($colors, 'sidebar');
+		font: 700 1em/1 $default-font;
+		height: 100%;
+		left: 0;
+		position: fixed;
+		top: em(50);
+		width: 13%;
+		z-index: 10;
+		&-to-left {
+			background: map-get($colors, 'sidebar');
+			border-radius: 50%;
+			color: #fff;
+			cursor: pointer;
+			display: block;
+			height: 3em;
+			opacity: 0;
+			padding: 9% 4% 0 0;
+			position: absolute;
+			right: -10%;
+			text-align: right;
+			top: 42%;
+			transform: translateX(-36%);
+			transition: .5s;
+			visibility: hidden;
+			width: 3em;
+			z-index: -1;
+		}
+		&:hover .sidebar-to-left {
+			opacity: 1;
+			transform: translateX(0);
+			visibility: visible;
+		}
+		&-func {
+			color: map-get($colors, 'border-grey');
+			display: block;
+			padding: calc(100%/5) 0;
+			text-align: center;
+			transition: .3s;
+			&:hover,
+			&.active { background: #000; color: #fff}
+			i {
+				display: block;
+				font-size: 2.5em;
+				margin-bottom: .5em;
+			}
+		}
+	}	
+	.main {
+		font: 700 1em/1 $default-font;
+		height: 100%;
+		margin-top: em(50);
+		overflow-y: auto;
+		padding: 2%;
+		&.main-empty {
+			color: #ccc;
+			font-size: 7em;
+			height: 100%;
+			line-height: 1.5em;
+			margin-top: 20%;
+			overflow-y: auto;
+			text-align: center;
+		}
+		.product-show {
+			.product-wrapper {
+				position:relative;
+				width: em(264);
+				height: em(450);
+				background-color:#fff;
+				margin: 0 2% 3% 0;
+				float:left;
+				transition: .3s;
+				z-index: 1;
+				&:nth-child(4n) {
+					margin-right: 0
+				}
+				&-img {
+					position: relative;
+					width: inherit;
+					height: 70%;
+					img {
+						width: inherit;
+						height: 100%
+					}
+					.product-img-blur {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: inherit;
+						height: 100%;
+						background-color: transparent;
+						z-index: 1;
+						transition: background-color 0.2s ease;
+					}
+					.icons {
+						@include center(absolute, both);
+						z-index: 2;
+						.fa {
+							cursor: pointer;
+							font-size: em(16);
+							@include btn(em(10), rgba(0, 0, 0, 0.7), map-get($colors, 'border-grey'));
+							transform: translateY(em(-130));
+							transition: all .2s ease-out;
+							opacity: 0;
+							visibility: hidden;
+							&:hover {
+								color: #fff;
+								border-color: #fff;
+								box-shadow: 0 0 em(4) #fff;
+							}
+						}
+					}
+				}
+				&-caption {
+					margin-top: 5%;
+					padding: 4%;
+					p {
+						font-weight: bold;
+					}
+					.label {font-size: em(18)}
+					.price {
+						position: absolute;
+						bottom: 3%;
+						z-index: 1;
+						font-size: em(18);
+						color: map-get($colors, 'text-orange');
+					}
+				}
+				&:hover {
+					box-shadow: 0 em(7) em(16) #000;
+					.product-img-blur {background-color: rgba(0, 0, 0, 0.4);}
+					.fa.fa-times,
+					.fa.fa-eye,
+					.fa.fa-pencil {
+						transform: translateY(0);
+						visibility: visible;
+						opacity: 1
+					}
+				}
+			}
+			&:after {@extend %clearfix;}
+		}
+		.pagination {
+			margin-bottom: 6%;
+			text-align: center;
+			a.load-more {
+				display: inline-block;
+				width: 4%;
+				text-align: center;
+				margin-right: 1%;
+				@include btn($c: #000);
+				transition: .3s;
+				&:hover {
+					color: #fff;
+					background: #000;
+				}
+				&:last-child {margin-right: 0;}
+			}
+		}
+	}
+}

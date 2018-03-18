@@ -1,0 +1,69 @@
+@import 'lib';
+
+.detail {
+	.form {
+		&-product {
+			margin: 3% auto;
+			&-col {
+				margin-right: 3%;
+				float: left;
+				width: calc(100%/3.2);
+				&:last-child {margin-right: 0;}
+				p {
+					line-height: 3em;
+					span {
+						display: inline-block;
+						font-size: 1.2em;
+						width: 45%;
+					}
+				}
+				input,
+				select,
+				option {
+					background: transparent;
+					border: none;
+					border-bottom: 1px solid #ccc;
+					font-size: 1em;
+					text-transform: capitalize;
+					width: 50%;
+					&[type=file] {width: 100%; border: none;}
+				}
+				// select, option {
+					// 	font-size: 1em;
+					// 	text-transform: capitalize;
+					// 	width: 50%;
+					// }
+					.product-image {
+						border: 1px solid #ccc;
+						height: 20em;
+						margin-bottom: 10%;
+						img {
+							align-items: center;
+							display: flex;
+							justify-content: center;
+							height: 100%;
+							width: 100%;
+						}
+					}
+
+				}
+				&:after {	@extend %clearfix;}
+			}
+			&-submit {
+				text-align: right;
+				input[type=submit] {
+					cursor: pointer;
+					@include btn($padding: 1% 2%, $bgc: map-get($colors, 'icon-black'), $c: #ccc);
+					font-size: 1rem;
+					font-weight: 400;
+				}
+				a {
+					display: inline-block;
+					@extend input[type=submit];
+					height: 2.85rem;
+					line-height: 1.25rem;
+					text-decoration: none;
+				}
+			}
+		}
+	}

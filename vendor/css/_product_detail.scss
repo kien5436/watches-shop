@@ -1,0 +1,183 @@
+.main {
+	width: 	map-get($sizes, 'section');
+	margin: 3% auto;
+	&-left {
+		float: left;
+		width: 	map-get($sizes, 'pd-main-left');
+		.product {
+			&-img {
+				float: left;
+				width: 50%;
+				margin-right: 5%;
+				overflow: hidden;
+				img {
+					width: 100%;
+					height: 100%;
+				}
+				&-list {
+					margin-top: 3%;
+					text-align: center;
+					img {
+						cursor: pointer;
+						width: calc(100%/5);
+					}
+				}
+			}
+			&-description {
+				float: left;
+				width: 40%;
+				font-family: $default-font;
+				p {
+					margin: 5% 0;
+					&:first-child {
+						font-size: 1.5em;
+						font-weight: 700;
+						margin-top: 0;
+						text-decoration: underline;
+					}
+					span {
+						&.price-new {
+							padding-left: 5%;
+							color:	map-get($colors, 'text-orange');
+						}
+						&.txt-bold {
+							font-weight: 700;
+							font-size: 1.2em;
+							&:first-child {text-transform: uppercase;}
+						}
+					}
+					input {
+						border: 1px solid	map-get($colors, 'border-grey');
+						padding: 3%;
+						font-size: 1em;
+						width: 36%;
+					}
+				}
+				.btn-add-to-cart {	
+					@include btn($padding: 5%, $bgc: map-get($colors, 'icon-black'));
+					&:hover {background: #000}
+				}
+			}
+			&:after {	@extend %clearfix}
+		}
+		.tab {
+			font-family: $default-font;
+			margin-top: 10%;
+			width: 95%;
+			&-title {
+				display: inline-block;
+				cursor: pointer;
+				padding: 2%;
+				border: 1px solid	map-get($colors, 'border-grey');
+				font-weight: 700;
+				&:first-child {border-top: 2px solid #000;}
+			}
+			&-content {
+				float: right;
+				width: 100%;
+				border: 1px solid map-get($colors, 'border-grey');
+				margin-top: -1px;
+				padding: 3%;
+				display: none;
+				&.show {display: block}
+				table {
+					border-collapse: collapse;
+					tr {
+						&:nth-child(even) {background: #e6e6e6}
+						td {
+							border: 1px solid 	map-get($colors, 'border-grey');
+							padding: 1% 2%;
+							vertical-align: middle;
+							width: em(506);
+							&:nth-child(odd) {
+								font-weight: 700;
+								width: 30%;
+							}
+							&:nth-child(even) {text-transform: capitalize;}
+						}
+					}
+				}
+				.tab-review-none {display: none; margin-bottom: 3%;}
+				.tab-review-wrapper {
+					display: none;
+					.user-reviewed {
+						text-align: justify;
+						margin-bottom: 3%;
+						&-info {
+							.username {
+								font-weight: 700;
+								font-size: 1.2em;
+							}
+							.publish-time {
+								font-size: .8em;
+								color: grey;
+								padding-left: 1%;
+							}
+						}
+					}
+				}
+				.user-review {
+					p {
+						height: 2em;
+						line-height: 2em;
+						background: map-get($colors, 'icon-black');
+						padding: 0 2%;
+						color: map-get($colors, 'text-grey');
+					}
+					#user-review-content {
+						display: block;
+						width: 100%;
+						height: 12em;
+						padding: 1%;
+						border: 1px solid map-get($colors, 'border-grey');
+						resize: none;
+						margin-bottom: 2%;
+						font-family: sans-serif;
+					}
+					input {
+						float: right;
+						@include btn($padding: 2%, $bgc: map-get($colors, 'icon-black'));
+						&:hover {background: #000}
+					}
+				}
+			}
+			&:after {	@extend %clearfix;}
+		}
+	}
+	&-right {
+		float: right;
+		width: calc(100% - #{map-get($sizes, 'pd-main-left')});
+		border: 1px solid 	map-get($colors, 'border-grey');
+		font-family: $default-font;
+		padding: 2% 3%;
+		.related-product {
+			> p {
+				font-weight: 700;
+				text-transform: uppercase;
+				margin-bottom: 6%;
+			}
+			&-wrapper {
+				a {
+					position: relative;
+					margin-bottom: 7%;
+					display: block;
+					img {
+						float: left;
+						width: 44%;
+					}
+					p {
+						float: right;
+						width: 47%;
+						span:last-child {
+							position: absolute;
+							bottom: 0;
+							right: 5%;
+						}
+					}
+					&:after {	@extend %clearfix;}
+				}
+			}
+		}
+	}
+	&:after {	@extend %clearfix;}
+}

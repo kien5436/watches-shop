@@ -1,0 +1,161 @@
+@font-face {
+	font-family: 'Muli';
+	src: url('../fonts/Muli-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Muli';
+	src: url('../fonts/Muli-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Muli';
+	src: url('../fonts/Muli-ExtraBold.ttf') format('truetype');
+	font-weight: 800;
+	font-style: normal;
+}
+$default-font: 'Muli', monospace, sans-serif !default;
+
+$colors: (
+	body-grey: rgb(241, 241, 241),
+	text-grey: #D1D0D0,
+	icon-grey: #c3bebe,
+	border-grey: #ccc,
+	icon-black: #232222,
+	sidebar: #2d2d2d,
+	text-orange: #dc4a36 
+	);
+$sizes: (
+	section: 86%,
+	pd-main-left: 70%
+);
+
+
+@function em($unit, $context: 16px) {
+	@if(unitless($unit)) {
+		$unit: $unit * 1px;
+	} @else {
+		$unit: $unit / 0.75pt * 1px;
+	}
+	@return #{($unit / $context)}em;
+}	
+@function rem($unit, $context: 16px) {
+	@if(unitless($unit)) {
+		$unit: $unit * 1px;
+	} @else {
+		$unit: $unit / 0.75pt * 1px;
+	}
+	@return #{($unit / $context)}rem;
+}
+
+@mixin btn($padding: 1%, $bgc: transparent, $c: #fff, $bd: 1px solid $c) {
+  padding: $padding;
+  background-color: $bgc;
+  color: $c;
+  border: $bd;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1rem;
+  @include btn();
+}
+
+@mixin navbar($margin-right){
+	display: inline-block;
+	margin-right: $margin-right;
+	text-align: center;	
+}
+
+@mixin center($position, $dimension){
+	position: $position;
+	@if ($dimension == 'y') {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	@else if ($dimension == 'x') {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	@else {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+}	
+
+%clearfix {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+%title {
+	position: relative;
+	background:	map-get($colors, 'body-grey');
+	font-weight: 800;
+	font-size: 1.6em;
+	color:	map-get($colors, 'icon-black');
+	width: 25%;
+	height: 1.5em;
+	line-height: 1.5em;
+	text-align: center;
+	margin: 0 auto 4%;
+	&:before{
+		@include center(absolute, x);
+		content: "";
+		background: #000;
+		width: 39%;
+		border-bottom: em(1) solid #000;
+		bottom: -42%;
+	}
+}
+
+%btn-unite {
+	@include btn();
+	border-width: em(2);
+	position: absolute;
+	top: 75%;
+	left: 23%;
+	overflow: hidden;
+	z-index: 0;
+	&:before,
+	&:after {
+		position: absolute;
+		content: "";
+		z-index: -1;
+		top: 0;
+		left: -123%;
+		width: 88%;
+		height: 102%;
+		transform: skew(-55deg);
+		background-color: #fff;
+		transition: 0.3s ease-in-out;
+	}
+	&:after {left: 143%}
+	&:hover {color: #000}
+	&:hover:before {left: -36%}
+	&:hover:after {left: 50%}
+}
+
+/*** responsive */
+$device-width: (
+	scr-md: 1366px,
+	scr-sm: 1280px,
+	scr-xsm: 1024px,
+	tab-lg: 768px,
+	fone-md: 360px
+	);
+$break-points: (
+	screen-sm: "screen and (min-width: #{map-get($device-width, scr-sm)}) and (max-width: #{map-get($device-width, scr-md) - 1})",
+	screen-xsm: "screen and (min-width: #{map-get($device-width, scr-xsm)}) and (max-width: #{map-get($device-width, scr-sm) - 1})",
+	tab-lg: "screen and (min-width: #{map-get($device-width, tab-lg)}) and (max-width: #{map-get($device-width, scr-xsm) - 1})",
+	fone-md: "screen and (min-width: #{map-get($device-width, fone-md)}) and (max-width: #{map-get($device-width, tab-lg) - 1})"
+	);
+
+@mixin respond-to($media) {
+	@media #{map-get($break-points, $media)} {@content;}
+}	
